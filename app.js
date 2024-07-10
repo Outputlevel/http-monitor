@@ -4,6 +4,7 @@ import 'dotenv/config';
 
 //functions
 import { sanitizeRequestBody } from './middlewares.js';
+import db from './buydepa.js';
 
 const app = express();
 const port = process.env.PORT || 9000;
@@ -39,6 +40,13 @@ app.post('/api', (req, res) => {
         message: 'Welcome to the API',
         request: req.body ? req.body : 'No data'
     });
+});
+
+
+//Buy depa
+app.get('/api/buydepa', async (req, res) => {
+    console.log('buydepa fetched')
+    res.json(db);
 });
 
 app.listen(port, () => {
