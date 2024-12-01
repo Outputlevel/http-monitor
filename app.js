@@ -12,12 +12,14 @@ const whitelist = JSON.parse(process.env.WHITELIST)
 
 
 
-app.use(cors({
-    origin: whitelist, 
-}));
-
 app.use(express.json());
 app.use(sanitizeRequestBody);
+
+
+app.get('/', (req, res) => {
+    res.send('Hello World');
+}
+);
 
 app.get('/api', (req, res) => {
     res.send({
