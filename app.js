@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
     res.send('App is up and running!');
 });
 
-app.post('/api/monitor', (req, res) => {
+app.post('/api/monitor', auth, (req, res) => {
     const now = new Date();
 
     const centralTime = new Intl.DateTimeFormat('en-US', {
